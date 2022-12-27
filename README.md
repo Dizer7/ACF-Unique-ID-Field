@@ -1,31 +1,57 @@
-# ACF Unique ID Field
+# ACF - Генерация уникального ID для репитера
 
-An [Advanced Custom Fields](https://www.advancedcustomfields.com/) field which generates a unique ID value.
+Поле [Advanced Custom Fields](https://www.advancedcustomfields.com/) будет генерировать уникальный ID. Изменить его нельзя. ID генерируется после сохранения нового репитера.
 
-While this library was originally developer for use in repeaters where each field in a repeater block needs to be given a persistent unique ID, it can be used anywhere an automatically-generated unique ID is required.
+Примечание:
+Хотя эта библиотека изначально была разработана для использования в повторителях, где каждому полю в блоке повторителя необходимо присвоить постоянный уникальный идентификатор, ее можно использовать везде, где требуется автоматически генерируемый уникальный идентификатор.
 
-## Installation
+## Установка
 
 ```
 composer require philipnewcomer/acf-unique-id-field
 ```
 
-## Usage
+или
 
-Call the `ACF_Field_Unique_ID` static method `init()` to activate it.
+1. Загружаем на сайт: /inc/ACF_Field_Unique_ID.php
+ 
+2. В файле дочерней темы functions.php вставляем:
+
+```php
+require_once get_stylesheet_directory() . '/inc/ACF_Field_Unique_ID.php';
+```
+
+3. Вызываем 'ACF_Field_Unique_ID' с помощью static method 'init()', чтобы активировать: 
 
 ```php
 PhilipNewcomer\ACF_Unique_ID_Field\ACF_Field_Unique_ID::init();
 ```
+4. Добавляем новое поле в группу и выбираем тип поля "Unique ID".
 
-Select the "Unique ID" field type when using the ACF GUI.
+Уникальные идентификаторы будут генерироваться при первоначальном сохранении.
 
-When editing a post, unique IDs will be generated on the initial save.
+## Примечание
 
-## Notes
-
-IDs will be generated in the following format:
+ID будет сгенерирован в следующем формате:
 
 ```
 59885be6f2289
+```
+
+## Важно
+
+При дублировании блока будут также скопированы и их ID. Это может нарушить логику работы элементов блока. Для правильной работы блоков и генерации ID необходимо вставлять новый пустой блок и не использовать дублирование.
+
+## Использование поля с ID в шаблоне
+
+Получение значения:
+
+```php
+$unique_id = get_sub_field( 'unique_id' );
+```
+
+Вставка/вывод значения:
+
+```php
+<?php echo esc_html( $unique_id ); ?>
 ```
