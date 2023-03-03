@@ -55,3 +55,7 @@ $unique_id = get_sub_field( 'unique_id' );
 ```php
 <?php echo esc_html( $unique_id ); ?>
 ```
+
+## :white_check_mark: Как скрыть поле с ID в админке?
+В поле, на вкладке Presentation - Атрибуты - Класс
+вставляем значение acf-hidden
