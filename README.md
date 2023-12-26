@@ -60,4 +60,4 @@ $unique_id = get_sub_field( 'unique_id' );
 В поле, на вкладке Presentation - Атрибуты - Класс
 вставляем значение acf-hidden
 
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://sitex.me/standwithukraine)
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://justgo.ink/zachest)
